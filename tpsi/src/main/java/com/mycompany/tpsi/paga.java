@@ -15,25 +15,24 @@ import java.util.concurrent.locks.ReentrantLock;
 class paga {
     private Lock mutex;
     int i;
-    paga(int i) {
-    this.i=i;
-    paga_random();
-    this.mutex = new ReentrantLock();
+
+    paga() {
+        conto c = new conto(2);
+        this.mutex = new ReentrantLock();
+        paga_random();
     }
 
-    paga(){
-        
-    }
-    public void paga_random(){
-        
-        int[] carta=new int[2];//nel primo posto andrà i soldi da prelevare dalla carta nel secondo da quale conto 
-        Random rand=new Random();
-        conto scrivi=new conto();
-        while(true){    
-        
-        carta[1]=rand.nextInt(i);    
-        carta[0]=rand.nextInt(1000);
-        mutex.lock();
+    public void paga_random() {
+        conto c = new conto(2);
+        int[] carta = new int[2];// nel primo posto andrà i soldi da prelevare dalla carta nel secondo da quale
+                                 // conto
+        Random rand = new Random();
+        conto scrivi = new conto();
+        while (true) {
+
+            carta[1] = rand.nextInt(c.getdato());
+            carta[0] = rand.nextInt(1000);
+            mutex.lock();
             try {
                 scrivi.paga(carta);
             } finally {
@@ -41,5 +40,5 @@ class paga {
             }
         }
 
-}
+    }
 }
