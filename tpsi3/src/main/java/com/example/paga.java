@@ -21,7 +21,7 @@ public class paga extends Thread {
             quantita = Math.abs(rand.nextInt(100));
             posizione = rand.nextInt(c.conto.length);
             if (c.getConto(posizione) < quantita) {
-            System.out.println("   soldi insufficienti  ");    
+            System.out.println("   soldi insufficienti  ");  //si ipotizza che vi sia un solo thread per pagare e uno per guadagnare, simulando una sitauzione il piu reale possibile  
             }else{
             mutex.lock();
             System.out.print("pagamento effettuato di: " + quantita + "\n");
